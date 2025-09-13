@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Add friend</title>
+</head>
+<style>
+     * {
+          margin: 0;
+          padding: 0;
+          background-color: black;
+
+     }
+
+     #container {
+          height: 100dvh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+     }
+
+     #card {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          background-color: white;
+          height: 400px;
+          width: 300px;
+          border-radius: 10px;
+          padding: 10px;
+     }
+
+     #image {
+          background-color: gray;
+          border-radius: 50%;
+          height: 75%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+     }
+
+     #image img {
+          height: 450px;
+     }
+
+     h2 {
+          background-color: white;
+          font-family: sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+     }
+
+     .title {
+          background: inherit;
+          color: red
+     }
+
+     #btn {
+          background-color: white;
+          height: 50px;
+          border-radius: 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+     }
+
+
+     button {
+          padding: 15px 25px;
+          border: unset;
+          border-radius: 15px;
+          color: #212121;
+          z-index: 1;
+          background: #e8e8e8;
+          position: relative;
+          font-weight: 1000;
+          font-size: 17px;
+          -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+          box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+          transition: all 250ms;
+          overflow: hidden;
+     }
+
+     button::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 0;
+          border-radius: 15px;
+          background-color: #212121;
+          z-index: -1;
+          -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+          box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+          transition: all 250ms
+     }
+
+     button:hover {
+          color: #e8e8e8;
+     }
+
+     button:hover::before {
+          width: 100%;
+     }
+</style>
+
+<body>
+     <div id='container'>
+          <div id="card">
+               <div id="image"><img
+                         src="https://images.pexels.com/photos/30641009/pexels-photo-30641009.jpeg?_gl=1*1ggqmak*_ga*MTY1MTA2NzAxNi4xNzU3NzcyNjcx*_ga_8JE65Q40S6*czE3NTc3NzI2NzEkbzEkZzEkdDE3NTc3NzI2NzUkajU2JGwwJGgw"
+                         alt=""></div>
+               <h2><span class='title'>
+                         Stranger
+                    </span></h2>
+               <div id="btn">
+                    <button class="green" id="button">Add Friend</button>
+               </div>
+          </div>
+     </div>
+     <script>
+          const btn = document.querySelector('#button');
+          const title = document.querySelector('.title');
+          btn.addEventListener('click', () => {
+
+               if (btn.textContent === 'Add Friend') {
+                    btn.textContent = "Remove";
+                    title.textContent = "Friends"
+                    title.style.color = "green"
+                    btn.style.background = "#c2f4b2";
+
+               }
+               else if (btn.textContent === 'Remove') {
+                    btn.textContent = "Add Friend";
+                    btn.style.background = "#e8e8e8";
+                    title.textContent = "Stranger"
+                    title.style.color = "red"
+
+
+               }
+          });
+     </script>
+</body>
+
+</html>
