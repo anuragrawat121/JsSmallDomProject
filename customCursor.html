@@ -34,7 +34,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          /* position : relative; */
+          /* position: relative; */
      }
 
      #cursor {
@@ -50,16 +50,21 @@
 
 <body>
      <div id="main">
-          <div id="cursor"></div>
+          <!-- <div class="blurred-background"></div> -->
+          <div id="cursor">
+               <div class="blurred-background"></div>
+          </div>
           <h1>Anurag</h1>
      </div>
 
      <script>
           const cursor = document.querySelector('#cursor')
           const main = document.querySelector('#main')
-          main.addEventListener('mousemove',(e) => {
-           cursor.style.left = e.x +"px"
-           cursor.style.top = e.y +"px"
+          const blurredBackground = document.querySelector('#blurred-background')
+
+          main.addEventListener('mousemove', (e) => {
+               cursor.style.left = e.x + "px"
+               cursor.style.top = e.y + "px"
           });
      </script>
 </body>
