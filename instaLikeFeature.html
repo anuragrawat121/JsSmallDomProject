@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #container {
+      height: 100dvh;
+      margin: 0;
+      position: relative;
+      background-color: black;
+    }
+
+    #card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 15px;
+      background-color: white;
+      height: 400px;
+      width: 300px;
+      border-radius: 10px;
+      padding: 4px;
+    }
+
+    #image {
+      background-color: gray;
+      height: 350px;
+      width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #image img {
+      height: 450px;
+    }
+
+    i {
+      position: absolute;
+      font-size: 70px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      z-index: 1;
+      color: #ffffff;
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    i.active {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='container'>
+    <div id="card">
+      <div id="image">
+        <img
+          src="https://images.pexels.com/photos/30641009/pexels-photo-30641009.jpeg"
+          alt="">
+        <i class="ri-heart-3-fill"></i>
+      </div>
+      <div class="Reactions">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const like = document.querySelector("#image");
+    const liked = document.querySelector("i");
+
+    like.addEventListener("dblclick", () => {
+      console.log("clicked");
+      liked.classList.add("active");
+
+      // remove after animation
+      setTimeout(() => {
+        liked.classList.remove("active");
+      }, 900);
+    });
+  </script>
+</body>
+
+</html>
