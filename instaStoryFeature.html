@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insta story feature</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+    }
+
+    html body {
+      height: 100dvh;
+      width: 100%;
+      background-color: #cacaca;
+      box-sizing: border-box;
+    }
+    #main {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #card {
+      height: 550px;
+      width: 300px;
+      border: 2px solid black;
+      border-radius: 12px;
+      background-color: white;
+      position: relative;
+    }
+    #stories {
+      height: 90px;
+      padding: 25px 0 25px 0;
+      border-bottom: 2px solid #dadada;
+      white-space: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+    .story {
+      display: inline-block;
+      height: 80px;
+      width: 80px;
+      border-radius: 50%;
+      border: 5px solid red;
+      overflow: hidden;
+      margin-left: 10px;
+    }
+    .story img {
+      height: 120px;
+      object-fit: cover;
+      object-position: center;
+    }
+    #stories::-webkit-scrollbar {
+      display: none;
+    }
+    .full-screen {
+      position: absolute;
+      margin: 0;
+      top: 50%;
+      left: 50%;
+      height: 550px;
+      width: 300px;
+      background-size: cover;
+      background-position: center;
+      display: none;
+      z-index: 10;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease-in-out;
+    }
+  </style>
+  <body>
+    <div id="main">
+      <div id="card">
+        <div class="full-screen"></div>
+        <div id="stories"></div>
+      </div>
+    </div>
+    <script>
+      let data = [
+        {
+          dp: "https://images.unsplash.com/photo-1757492166964-518d2c8b9f41?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8",
+          story:
+            "https://images.pexels.com/photos/30641009/pexels-photo-30641009.jpeg",
+        },
+        {
+          dp: "https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvcnRyYWl0fGVufDB8fDB8fHww",
+          story:
+            "https://images.unsplash.com/photo-1548207800-8c16d068bf17?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3D",
+        },
+        {
+          dp: "https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=1923&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          story:
+            "https://images.unsplash.com/photo-1570158268183-d296b2892211?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+          dp: "https://plus.unsplash.com/premium_photo-1681489930334-b0d26fdb9ed8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fHBvcnRyYWl0fGVufDB8fDB8fHww",
+          story:
+            "https://images.unsplash.com/photo-1614204424926-196a80bf0be8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fHBvcnRyYWl0fGVufDB8fDB8fHww",
+        },
+      ];
+      let clutter = "";
+      let stories = document.getElementById("stories");
+      data.forEach((elem, idx) => {
+        //    console.log(elem, idx);
+        clutter += `<div class="story"><img id="${idx}" src=${elem.dp} alt="" /></div>`;
+      });
+      stories.innerHTML = clutter;
+      stories.addEventListener("click", (dets) => {
+        let id = dets.target.id;
+        if (id === "") {
+          return;
+        } else {
+          let storyValue = data[id].story;
+          console.log(storyValue);
+          let fullScreen = document.querySelector(".full-screen");
+          fullScreen.style.display = "block";
+          fullScreen.style.backgroundImage = `url(${storyValue})`;
+          setTimeout(() => {
+            fullScreen.style.display = "none";    
+          }, 10000);
+          // card.style.display = none;
+          // fullScreen.style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>
